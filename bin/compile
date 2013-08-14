@@ -29,21 +29,24 @@ export PATH=/sbin:/usr/sbin:$PATH:
 
 echo "-----> Fetching and installing graphviz"
 
+echo "Downloading..." | indent
 cd $WGET_BUILD
 curl -O http://www.graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.32.0.tar.gz >/dev/null 2>&1
-echo "Downloaded" | indent
 
+echo "Decompressing..." | indent
 tar zxvf graphviz-2.32.0.tar.gz >/dev/null 2>&1
-echo "Decompressed" | indent
 
 cd graphviz-2.32.0
+
+echo "Configuring..." | indent
 ./configure --prefix=$CACHE_DIR/.tools/graphviz >/dev/null 2>&1
-echo "Configured" | indent
 
+echo "Compiling..." | indent
 make >/dev/null 2>&1
-echo "Compiled" | indent
 
+echo "Installing..." | indent
 make install >/dev/null 2>&1
+
 echo "Graphviz installed" | indent
 
 exit 0
