@@ -21,9 +21,9 @@ BUILDPACK_DIR=`cd $(dirname $0); cd ..; pwd`
 BUILD_DIR=$1
 CACHE_DIR=$2
 
-GRAPHVIZ_BUILD="$(mktmpdir graphviz)"
+GRAPHVIZ_BUILD=$CACHE_DIR/.tools/graphviz
 
-mkdir -p $CACHE_DIR/.tools/graphviz
+mkdir -p $GRAPHVIZ_BUILD
 
 export PATH=/sbin:/usr/sbin:$PATH:
 
@@ -39,13 +39,16 @@ tar zxvf graphviz-2.32.0.tar.gz >/dev/null 2>&1
 cd graphviz-2.32.0
 
 echo "Configuring..." | indent
-./configure --prefix=$CACHE_DIR/.tools/graphviz >/dev/null 2>&1
+./configure --prefix=$GRAPHVIZ_BUILD >/dev/null 2>&1
 
 echo "Compiling..." | indent
 make >/dev/null 2>&1
 
 echo "Installing..." | indent
 make install >/dev/null 2>&1
+
+echo "Adding to PATH..." | indent
+export PATH=$GRAPHVIZ_BUILD/bin:$PATH:
 
 echo "Graphviz installed" | indent
 
