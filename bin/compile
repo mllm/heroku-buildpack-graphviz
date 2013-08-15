@@ -23,6 +23,7 @@ CACHE_DIR=$2
 
 GRAPHVIZ_BUILD=$CACHE_DIR/.tools/graphviz
 
+rm -rf $GRAPHVIZ_BUILD
 mkdir -p $GRAPHVIZ_BUILD
 
 export PATH=/sbin:/usr/sbin:$PATH:
