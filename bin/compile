@@ -31,21 +31,21 @@ echo "-----> Fetching and installing graphviz"
 
 echo "Downloading..." | indent
 cd $WGET_BUILD
-curl -O http://www.graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.32.0.tar.gz >/dev/null 2>&1
+curl -O http://www.graphviz.org/pub/graphviz/stable/SOURCES/graphviz-2.32.0.tar.gz >/dev/null
 
 echo "Decompressing..." | indent
-tar zxvf graphviz-2.32.0.tar.gz >/dev/null 2>&1
+tar zxvf graphviz-2.32.0.tar.gz >/dev/null
 
 cd graphviz-2.32.0
 
 echo "Configuring..." | indent
-./configure --prefix=$GRAPHVIZ_BUILD >/dev/null 2>&1
+./configure --prefix=$GRAPHVIZ_BUILD >/dev/null
 
 echo "Compiling..." | indent
-make >/dev/null 2>&1
+make >/dev/null
 
 echo "Installing..." | indent
-make install >/dev/null 2>&1
+make install >/dev/null
 
 echo "Adding to PATH..." | indent
 export PATH=$GRAPHVIZ_BUILD/bin:$PATH:
